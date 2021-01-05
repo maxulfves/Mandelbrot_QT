@@ -1,7 +1,7 @@
 # Mandelbrot_QT
 An interactive C++ project which displays the Multibrot-sets and their corrseponding Julia-sets. 
 
-Tested and developed on Windows 64-bit version. 
+Tested and developed on Windows 10 64-bit version. 
 
 
 How to use: 
