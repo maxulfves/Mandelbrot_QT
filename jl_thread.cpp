@@ -1,11 +1,13 @@
 #include "jl_thread.h"
 
 #include <QtCore>
-#include <QDebug>
-
 #include <QVector3D>
 #include <QMatrix>
-#include <QDebug>
+
+void JL_Thread::stop()
+{
+    should_exit = true;
+}
 
 JL_Thread::JL_Thread(QObject *parent) :
     QThread(parent)
@@ -28,6 +30,9 @@ int JL_Thread::converges(int x, int y) {
     //SAVE INTERMEDIATE VALUES:
     buffer[x][y] = n;
     previous[x][y] = z;
+
+    QRgb value = qRgb(0, n * (255.0/depth), 0);
+    image.setPixel(x, y, value);
 
     return n;
 }
@@ -62,13 +67,12 @@ void JL_Thread::setZ_0(std::complex<double> com ) {
     z_0.imag(com.imag());
     z_0.real(com.real());
 
-    qDebug() << com.real() << " + " << com.imag();
 }
 
 void JL_Thread::run(){
     setExponent(2.0);
-    qDebug() << z_0.real()  << "/" << z_0.imag();
-    while(true) {
+
+    while(!should_exit) {
 
         if(changed){
             changed = false;
@@ -90,5 +94,6 @@ void JL_Thread::run(){
         mutex.unlock();
         */
     }
+    is_done = true;
 }
 

@@ -21,25 +21,31 @@ class MB_Widget2 : public QWidget
     Q_OBJECT
 public:
     explicit MB_Widget2(QWidget *parent = nullptr);
-    void setExponent(float value);
     void start();
-    void updatePixel(int, int, int);
+
+    /// Reference to the thread rendering the MB-set.
     MB_Thread *myThread;
 protected:
+    // Following functions need no explaination.
+
     void paintEvent(QPaintEvent *) override;
     void mouseMoveEvent(QMouseEvent *) override;
     void mouseReleaseEvent(QMouseEvent *) override;
-private:
-    bool converges(std::complex<double> c);
-    float exponent = 2.0f;
-    int m_canvas[1000][1000];
+    void wheelEvent(QWheelEvent* event) override;
+    void keyPressEvent(QKeyEvent *event) override;
 
+
+private:
+    //Todo: make vector.
+    /// The x-coord for the cursor.
     int m_x = 250;
+    /// The y-coord for the cursor.
     int m_y = 250;
 
 private slots:
 
 signals:
+    /// Signal for when the MB-widget has chosen a different Julia-starting value.
     void NumberChanged(double, double);
 
 };

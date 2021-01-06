@@ -21,18 +21,16 @@ class Julia_Widget : public QWidget
     Q_OBJECT
 public:
     explicit Julia_Widget(QWidget *parent = nullptr);
-    void setExponent(float value);
+
+    /// Starts the thread
     void start();
-    void updatePixel(int, int, int);
-    JL_Thread *myThread;
+
+
+    JL_Thread *myThread; // TODO: Make private.
 protected:
     void paintEvent(QPaintEvent *) override;
 
 private:
-    bool converges(std::complex<double> c);
-    float exponent = 2.0f;
-    int m_canvas[1000][1000];
-
 
 };
 

@@ -5,6 +5,7 @@
 #include <QDebug>
 #include "mb_thread.h"
 #include "jl_thread.h"
+#include <QMessageBox>
 
 QT_BEGIN_NAMESPACE
 namespace Ui { class MainWindow; }
@@ -16,15 +17,25 @@ class MainWindow : public QMainWindow
 public:
     explicit MainWindow(QWidget *parent = nullptr);
     ~MainWindow();
+
+    /// The thread rendering the Mandelbrot-set.
     MB_Thread *myThread;
+
+    /// The thread rendering the Julia-set.
     JL_Thread *jlThread;
 
 private slots:
+    // Following functions need no explaination.
+
     void on_horizontalSlider_valueChanged(int value);
     void clickedGraph(QMouseEvent *ev);
+    void on_actionExit_triggered();
+    void on_actionAbout_triggered();
+
+    void on_actionTutorial_triggered();
+
 public slots:
     void onNumberChanged(double, double);
-
 private:
     Ui::MainWindow *ui;
 };
