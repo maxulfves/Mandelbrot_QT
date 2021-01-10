@@ -50,6 +50,9 @@ public:
 
 
 private:
+    ///Maximum depth of render
+    const int maxDepth = 50;
+
     /// Updates a given pixel by one step.
     int converges(int, int);
 

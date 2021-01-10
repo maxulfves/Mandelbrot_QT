@@ -78,13 +78,13 @@ void JL_Thread::run(){
             changed = false;
             reset();
         }
-
-        for(int x = 0; x < 1000; x++) {
-            for(int y = 0; y < 1000; y++){
-                converges(x, y);
+        if(depth < maxDepth){
+            for(int x = 0; x < 1000; x++) {
+                for(int y = 0; y < 1000; y++){
+                    converges(x, y);
+                }
             }
         }
-
         //TODO Check if program should exit.
 
         /*

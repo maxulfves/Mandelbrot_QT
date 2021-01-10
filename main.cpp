@@ -10,7 +10,7 @@ int main(int argc, char *argv[])
 
 
     MainWindow w;
-
+    //w.setWindowFlags(Qt::Dialog | Qt::MSWindowsFixedSizeDialogHint);
 
     w.show();
 

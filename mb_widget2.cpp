@@ -11,7 +11,7 @@ void MB_Widget2::paintEvent(QPaintEvent *)
     QPainter painter(this);
 
     //Define rectangles for the projection.
-    QRectF target(0, 0, 500.0, 500.0);
+    QRectF target(0, 0, width(), height());
     QRectF source(0, 0, 1000, 1000);
 
     //Draws the image
@@ -48,10 +48,24 @@ void MB_Widget2::mouseReleaseEvent(QMouseEvent *event)
                 );
 }
 
+
+float zoom = 1.0f;
 void MB_Widget2::wheelEvent(QWheelEvent *event)
 {
     //TODO: Add zoom functionality!
-    //auto value = event->angleDelta();
+    qDebug() << updatesEnabled();
+    auto value = event->angleDelta();
+
+    if(value.y() > 0){
+        zoom *= 1.01;
+    }else{
+        zoom *= 0.99;
+    }
+
+    this->setGeometry(0, 0, 1000 * zoom, 1000 * zoom);
+
+    this->updateGeometry();
+
     //myThread->scrollIn(value.ry());
 
 }

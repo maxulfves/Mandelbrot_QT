@@ -120,15 +120,16 @@ void MB_Thread::arrowPress(int key)
 
 void MB_Thread::run() {
     while(!should_exit) {
-
-        do{
-            for(int x = 0; x < 1000; x++) {
-                for(int y = 0; y < 1000; y++){
-                    converges(x, y);
+        if(depth < maxDepth){
+            do{
+                for(int x = 0; x < 1000; x++) {
+                    for(int y = 0; y < 1000; y++){
+                        converges(x, y);
+                    }
                 }
-            }
-        }while(depth < 2);
+            }while(depth < 2);
 
+        }
     }
 
     is_done = true;
