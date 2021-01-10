@@ -61,11 +61,11 @@ void MB_Widget2::wheelEvent(QWheelEvent *event)
     }else{
         zoom *= 0.99;
     }
-
+    /*
     this->setGeometry(0, 0, 1000 * zoom, 1000 * zoom);
 
     this->updateGeometry();
-
+    */
     //myThread->scrollIn(value.ry());
 
 }
