@@ -26,5 +26,6 @@ Tested and developed on Windows 10 64-bit version.
 - Make the task bar more useful. 
 - Perhaps the window should be scaleable. Might be too much work for a demo. Should be examined. 
 - Test the functionallity on another setup.
+- Add zoom-functionality for the Mandelbrot set. Might too heavy for a normal CPU to handle as the scaling factor increases, in which case it should be pre-rendered. 
 
 ![Image not available](https://github.com/maxulfves/Mandelbrot_QT/blob/main/Teasers/Multibrot.PNG)
