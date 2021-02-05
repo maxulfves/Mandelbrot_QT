@@ -50,6 +50,9 @@ public:
 
 
 private:
+    ///Max depth of render
+    int maxDepth = 50;
+
     /// Updates a given pixel by one step.
     int converges(int, int);
 

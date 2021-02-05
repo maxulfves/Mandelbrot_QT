@@ -51,14 +51,8 @@ int MB_Thread::converges(int x, int y)
     //The pixel coordinate. (-500, -500) to (500, 500)
     auto vec = QVector3D(x - 500 + translation.x(), y - 500 + translation.y(), 0);
 
-    if(x == 0 && y == 0){
-        qDebug() << vec;
-    }
-
     //The complex coordinate. Is defined by the amount of zoom, starting at (-2.5, -2.5) to (2.5, 2.5)
     auto bob = (vec) * mat;
-    //auto bob = vec / 500 * zoom;
-
 
     auto c = std::complex<double>(
                 bob.x() ,
@@ -75,10 +69,8 @@ int MB_Thread::converges(int x, int y)
     depth = (depth < n) ? n : depth;
 
     //SAVE INTERMEDIATE VALUES:
-
     QRgb value = qRgb(0, n * (255.0/depth), 0);
     image.setPixel(x, y, value);
-
 
     buffer[x][y] = n;
     previous[x][y] = z;
@@ -97,7 +89,6 @@ void MB_Thread::setExponent(float exp)
 void MB_Thread::arrowPress(int key)
 {
     reset();
-    qDebug() << translation;
 
     switch (key) {
     case Qt::Key::Key_Left :
@@ -122,11 +113,16 @@ void MB_Thread::run() {
     while(!should_exit) {
 
         do{
-            for(int x = 0; x < 1000; x++) {
-                for(int y = 0; y < 1000; y++){
+            #pragma omp parallel for
+            for(int xy = 0; xy < 1000 * 1000; ++xy){
+                const int x = xy/1000;
+                const int y = xy % 1000;
+
+                if(depth < maxDepth){
                     converges(x, y);
                 }
             }
+
         }while(depth < 2);
 
     }

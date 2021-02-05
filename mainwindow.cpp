@@ -46,10 +46,6 @@ void MainWindow::on_horizontalSlider_valueChanged(int value)
 
 }
 
-void MainWindow::clickedGraph(QMouseEvent *ev)
-{
-    //qDebug() << ev->pos();
-}
 
 void MainWindow::onNumberChanged(double x, double y){
     //ui->mandelbrot_widget->updatePixel(x, y, n);

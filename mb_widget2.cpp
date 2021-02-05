@@ -48,18 +48,4 @@ void MB_Widget2::mouseReleaseEvent(QMouseEvent *event)
                 );
 }
 
-void MB_Widget2::wheelEvent(QWheelEvent *event)
-{
-    //TODO: Add zoom functionality!
-    //auto value = event->angleDelta();
-    //myThread->scrollIn(value.ry());
-
-}
-
-void MB_Widget2::keyPressEvent(QKeyEvent *event)
-{
-    //TODO: Add move functionality!
-    //myThread->arrowPress(event->key());
-}
-
 

@@ -28,7 +28,6 @@ private slots:
     // Following functions need no explaination.
 
     void on_horizontalSlider_valueChanged(int value);
-    void clickedGraph(QMouseEvent *ev);
     void on_actionExit_triggered();
     void on_actionAbout_triggered();
 

@@ -79,20 +79,16 @@ void JL_Thread::run(){
             reset();
         }
 
-        for(int x = 0; x < 1000; x++) {
-            for(int y = 0; y < 1000; y++){
+        #pragma omp parallel for
+        for(int xy = 0; xy < 1000*1000; xy++){
+            const int x = xy/1000;
+            const int y = xy % 1000;
+
+            if(depth < maxDepth){
                 converges(x, y);
             }
+
         }
-
-        //TODO Check if program should exit.
-
-        /*
-        QMutex mutex;
-        mutex.lock();
-        if(false) break;
-        mutex.unlock();
-        */
     }
     is_done = true;
 }
