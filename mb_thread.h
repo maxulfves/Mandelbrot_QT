@@ -55,8 +55,8 @@ public:
     void arrowPress(int);
 
 private:
-    ///Max depth of simulation
-    int maxDepth = 50;
+    ///Maximum depth of render
+    const int maxDepth = 50;
 
     /// Translation of the mb set.
     QVector2D translation = QVector2D(0, 0);

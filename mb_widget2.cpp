@@ -11,7 +11,7 @@ void MB_Widget2::paintEvent(QPaintEvent *)
     QPainter painter(this);
 
     //Define rectangles for the projection.
-    QRectF target(0, 0, 500.0, 500.0);
+    QRectF target(0, 0, width(), height());
     QRectF source(0, 0, 1000, 1000);
 
     //Draws the image
