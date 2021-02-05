@@ -111,7 +111,6 @@ void MB_Thread::arrowPress(int key)
 
 void MB_Thread::run() {
     while(!should_exit) {
-
         do{
             #pragma omp parallel for
             for(int xy = 0; xy < 1000 * 1000; ++xy){
@@ -125,6 +124,7 @@ void MB_Thread::run() {
 
         }while(depth < 2);
 
+        }
     }
 
     is_done = true;

@@ -78,7 +78,6 @@ void JL_Thread::run(){
             changed = false;
             reset();
         }
-
         #pragma omp parallel for
         for(int xy = 0; xy < 1000*1000; xy++){
             const int x = xy/1000;
